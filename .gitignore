@@ -1,0 +1,6 @@
+# IntelliJ
+/target
+pom.xml
+*.properties
+*.iml
+src/main/webapp/start.html
