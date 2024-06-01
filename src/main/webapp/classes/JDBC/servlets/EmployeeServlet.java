@@ -25,7 +25,7 @@ public class EmployeeServlet extends HttpServlet {
                         <li>
                             %s %s %s %s
                         </li>
-                        """.formatted(flightDto.getUuid().toString(), flightDto.getFirstName(), flightDto.getRole(), flightDto.getEmail())
+                        """.formatted(flightDto.uuid().toString(), flightDto.firstName(), flightDto.role(), flightDto.email())
                 );
             });
             out.write("</ul>");
