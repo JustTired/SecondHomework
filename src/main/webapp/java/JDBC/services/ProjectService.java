@@ -45,7 +45,7 @@ public class ProjectService {
     }
 
     public boolean addProject(ProjectDto projectDto) {
-        return PROJECT_DAO_INSTANCE.instance(create(projectDto)).getName()
+        return PROJECT_DAO_INSTANCE.add(create(projectDto)).getName()
                 .equals(projectDto.name());
     }
 

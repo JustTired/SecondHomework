@@ -45,7 +45,7 @@ public class CompanyService {
     }
 
     public boolean createCompany(CompanyDto dto) {
-        return dao.instance(create(dto)).getName()
+        return dao.add(create(dto)).getName()
                 .equals(dto.name());
     }
 }

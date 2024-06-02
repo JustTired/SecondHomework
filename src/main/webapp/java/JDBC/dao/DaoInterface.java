@@ -3,7 +3,7 @@ package JDBC.dao;
 import java.util.List;
 
 public interface DaoInterface<K, E> {
-    E instance(E entity);
+    E add(E entity);
 
     List<E> readAll();
 

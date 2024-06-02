@@ -63,7 +63,7 @@ public class EmployeeService {
     }
 
     public boolean addEmployee(EmployeeDto employeeDto) {
-        String dtoUUID = employeeDao.instance(create(employeeDto)).getUuid().toString();
+        String dtoUUID = employeeDao.add(create(employeeDto)).getUuid().toString();
 
         return dtoUUID.equals(employeeDto.uuid().toString());
     }

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static JDBC.dao.SqlRequestConstants.*;
+import static JDBC.util.SqlRequestConstants.*;
 
 public class ProjectDao implements DaoInterface<String, ProjectEntity> {
     private ProjectDao() {
@@ -23,7 +23,7 @@ public class ProjectDao implements DaoInterface<String, ProjectEntity> {
     }
 
     @Override
-    public ProjectEntity instance(ProjectEntity projectEntity) {
+    public ProjectEntity add(ProjectEntity projectEntity) {
         try (var connection = ConnectionPool.get();
              var statement = connection.prepareStatement(INSERT_PROJECT_QUERY)) {
             statement.setString(1, projectEntity.getName());

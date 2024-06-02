@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static JDBC.dao.SqlRequestConstants.*;
+import static JDBC.util.SqlRequestConstants.*;
 
 public class CompanyDao implements DaoInterface<String, CompanyEntity> {
     public static final String COLUMN_NAME = "company_name";
@@ -36,7 +36,7 @@ public class CompanyDao implements DaoInterface<String, CompanyEntity> {
     }
 
     @Override
-    public CompanyEntity instance(CompanyEntity company) {
+    public CompanyEntity add(CompanyEntity company) {
         try (var connection = ConnectionPool.get();
              PreparedStatement statement = connection.prepareStatement(
                      INSERT_COMPANY_QUERY, Statement.RETURN_GENERATED_KEYS)) {

@@ -1,8 +1,9 @@
-package JDBC.dao;
+package JDBC.util;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public final class SqlRequestConstants {
-    private SqlRequestConstants() {
-    }
 
     public static final String INSERT_COMPANY_QUERY = """
             insert into companies (company_name)

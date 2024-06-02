@@ -1,28 +1,31 @@
 import JDBC.dto.EmployeeDto;
 import JDBC.services.EmployeeService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
+import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeServiceTest {
-    EmployeeService employee = EmployeeService.getInstance();
-    EmployeeDto testEmployee = new EmployeeDto(
-            UUID.randomUUID(),
-            "Lara",
-            "Developer",
+    @Mock
+    EmployeeService instance = EmployeeService.getInstance();
+    @Mock
+    EmployeeDto testDto = new EmployeeDto(UUID.randomUUID(),
+            "Donald",
+            "DevOps",
             "some@gmail.com",
             "Unknown"
     );
-    EmployeeDto first = employee.getFirstEmployee();
-
+    @Mock
+    List<?> listOfEmployees = instance.getAllEmployees();
 
     @Test
-    void shouldGetEmployee() {
-        assertTrue(employee.addEmployee(testEmployee));
-        assertEquals(first, employee.getFirstEmployee());
-        assertTrue(employee.removeEmployee(testEmployee.uuid()));
+    void tests() {
+        assertTrue(instance.addEmployee(testDto));
+        assertTrue(instance.removeEmployee(testDto.uuid()));
+        assertEquals(listOfEmployees.get(0), instance.getFirstEmployee());
     }
 }
