@@ -36,7 +36,16 @@ public class CompanyService {
         return new CompanyEntity(dto.name());
     }
 
-    public boolean updateCompany(CompanyDto company) {
-        return dao.update(company.name(), create(company));
+    public boolean updateCompany(String identify, CompanyDto company) {
+        return dao.update(identify, create(company));
+    }
+
+    public boolean deleteCompany(CompanyDto company) {
+        return dao.delete(company.name());
+    }
+
+    public boolean createCompany(CompanyDto dto) {
+        return dao.instance(create(dto)).getName()
+                .equals(dto.name());
     }
 }

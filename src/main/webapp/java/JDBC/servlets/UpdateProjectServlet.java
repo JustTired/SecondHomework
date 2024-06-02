@@ -24,16 +24,18 @@ public class UpdateProjectServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var map = request.getParameterMap();
-        INSTANCE.updateProject(new ProjectDto(
+        boolean res = INSTANCE.updateProject(new ProjectDto(
                 Arrays.toString(map.get("name")),
                 Date.valueOf(Arrays.toString(map.get("date"))))
         );
-        try {
-            response.getWriter().write("Project updated successfully");
-        } catch (IOException e) {
-            throw new RuntimeException("Error writing response", e);
+        var writer = response.getWriter();
+        if (res) {
+            writer.write("Project updated successfully");
+        } else {
+            writer.write("Project update failed");
         }
+        writer.close();
     }
 }

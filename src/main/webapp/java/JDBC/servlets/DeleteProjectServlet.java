@@ -22,12 +22,15 @@ public class DeleteProjectServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         var map = req.getParameterMap();
-        INSTANCE.deleteProject(Arrays.toString(map.get("projectName")));
-        try {
-            resp.getWriter().write("Project deleted.");
-        } catch (IOException e) {
-            throw new RuntimeException("Error writing response", e);
+        boolean res = INSTANCE.deleteProject(Arrays.toString(map.get("projectName")));
+        var writer = resp.getWriter();
+        if (res) {
+            writer.write("Project deleted");
+        } else {
+            writer.write("Project not deleted");
         }
+        writer.close();
     }
 }

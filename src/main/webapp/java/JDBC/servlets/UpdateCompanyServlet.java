@@ -22,7 +22,15 @@ public class UpdateCompanyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String companyName = req.getParameter("companyName");
-        INSTANCE.updateCompany(new CompanyDto(companyName));
-        resp.getWriter().write("<H3>Company updated successfully</H3>");
+        String identify = req.getParameter("identify");
+        resp.setContentType("text/html;charset=UTF-8");
+        boolean result = INSTANCE.updateCompany(identify, new CompanyDto(companyName));
+        var writer = resp.getWriter();
+        if (result) {
+            writer.println("Company updated successfully!");
+        } else {
+            writer.println("Company could not be updated!");
+        }
+        writer.close();
     }
 }

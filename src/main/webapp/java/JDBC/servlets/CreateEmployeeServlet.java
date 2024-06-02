@@ -22,19 +22,22 @@ public class CreateEmployeeServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
-        INSTANCE.updateEmployee(new EmployeeDto(
+        boolean res = INSTANCE.addEmployee(new EmployeeDto(
                 uuid,
                 Arrays.toString(map.get("firstName")),
                 Arrays.toString(map.get("role")),
                 Arrays.toString(map.get("email")),
-                Arrays.toString(map.get("companyName"))));
-        try {
-            resp.getWriter().write("<H1>Employee Create Successfully</H1>");
-        } catch (IOException e) {
-            throw new RuntimeException("Employee Not Created", e);
+                Arrays.toString(map.get("companyName")))
+        );
+        var writer = resp.getWriter();
+        if (res) {
+            writer.write("Employee has been created");
+        } else {
+            writer.write("Employee has not been created");
         }
+        writer.close();
     }
 }

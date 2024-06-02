@@ -24,12 +24,16 @@ public class CreateProjectServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
-        INSTANCE.addProject(new ProjectDto(
+        boolean res = INSTANCE.addProject(new ProjectDto(
                 Arrays.toString(map.get("name")),
                 Date.valueOf(Arrays.toString(map.get("date"))))
         );
-        try (var printWriter = resp.getWriter()) {
-            printWriter.write("Project created successfully");
+        var writer = resp.getWriter();
+        if (res) {
+            writer.write("Project created successfully");
+        } else {
+            writer.write("Project already exists");
         }
+        writer.close();
     }
 }

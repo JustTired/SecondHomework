@@ -27,9 +27,9 @@ public class CompanyDao implements DaoInterface<String, CompanyEntity> {
     @Override
     public boolean delete(String companyName) {
         try (var connection = ConnectionPool.get();
-             var statement = (connection).prepareStatement(DELETE_COMPANY)) {
+             var statement = connection.prepareStatement(DELETE_COMPANY)) {
             statement.setString(1, companyName);
-            return (statement).executeUpdate() > 0;
+            return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DaoException("Error delete company ", e);
         }
