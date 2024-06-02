@@ -23,6 +23,6 @@ class EmployeeServiceTest {
     void shouldGetEmployee() {
         assertTrue(employee.addEmployee(testEmployee));
         assertEquals(first, employee.getFirstEmployee());
-        assertTrue(employee.removeEmployee(testEmployee));
+        assertTrue(employee.removeEmployee(testEmployee.uuid()));
     }
 }

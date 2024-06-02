@@ -150,7 +150,7 @@ public class EmployeeDao implements DaoInterface<UUID, EmployeeEntity> {
             statement.setString(2, employeeEntity.getLastName());
             statement.setString(3, employeeEntity.getRole());
             statement.setString(4, employeeEntity.getEmail());
-            statement.setString(5, String.valueOf(identify));
+            statement.setObject(5, identify);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DaoException("Update Employee failed ", e);

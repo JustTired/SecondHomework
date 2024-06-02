@@ -6,6 +6,7 @@ import JDBC.entities.CompanyEntity;
 import JDBC.entities.EmployeeEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public class EmployeeService {
@@ -57,9 +58,8 @@ public class EmployeeService {
         return employeeDao.update(employeeDto.uuid(), create(employeeDto));
     }
 
-    public boolean removeEmployee(EmployeeDto employeeDto) {
-        return employeeDao.delete(
-                employeeDto.uuid());
+    public boolean removeEmployee(UUID uuid) {
+        return employeeDao.delete(uuid);
     }
 
     public boolean addEmployee(EmployeeDto employeeDto) {

@@ -2,6 +2,7 @@ package JDBC.util;
 
 
 import lombok.experimental.UtilityClass;
+import org.postgresql.Driver;
 
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
@@ -31,7 +32,7 @@ public class ConnectionPool {
 
     private static void loadDriver() {
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName(Driver.class.getName());
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Could not load org.postgresql.Driver", e);
         }
