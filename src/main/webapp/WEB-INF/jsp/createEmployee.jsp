@@ -2,11 +2,11 @@
 
 <!DOCTYPE html lang="en">
 <head>
-    <title>update employee</title>
+    <title>create employee</title>
 </head>
 <body>
-<form action="/update-employee" method="post">
-    <H3>Update Employee</H3>
+<form action="/create-employee" method="post">
+    <H3>Create Employee</H3>
     <br>
     <label for="employeeUUID"> UUID:
         <input type="text" name="uuid" id="employeeUUID">

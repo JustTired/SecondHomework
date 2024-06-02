@@ -18,23 +18,24 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/x-www-form-urlencoded");
         req.getRequestDispatcher("WEB-INF/jsp/updateEmployee.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
-        boolean result = INSTANCE.updateEmployee(new EmployeeDto(
+        INSTANCE.updateEmployee(new EmployeeDto(
                 uuid,
                 Arrays.toString(map.get("firstName")),
                 Arrays.toString(map.get("role")),
                 Arrays.toString(map.get("email")),
                 Arrays.toString(map.get("companyName"))));
-        if (result) {
+        try {
             resp.getWriter().write("<H1>Employee Updated Successfully</H1>");
-        } else {
-            resp.getWriter().write("<H1>Employee Not Updated</H1>");
+        } catch (IOException e) {
+            throw new RuntimeException("Employee Not Updated", e);
         }
     }
 }

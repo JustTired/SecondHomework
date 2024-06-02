@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Пользователь
-  Date: 6/2/2024
-  Time: 6:52 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html lang="en">
 <head>
     <title>Title</title>
 </head>
 <body>
-
+<form action="/delete-employee"></form>
+<H3>Delete Employee</H3>
+<br>
+<label for="employeeUUID"> UUID:
+    <input type="text" name="uuid" id="employeeUUID">
+</label><br>
+<button type="submit">Send</button>
 </body>
-</html>

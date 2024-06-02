@@ -1,7 +1,6 @@
 package JDBC.servlets;
 
-
-import JDBC.services.EmployeeService;
+import JDBC.services.ProjectService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
-@WebServlet("/employee")
-public class FirstEmployeeServlet extends HttpServlet {
-    private static final EmployeeService INSTANCE = EmployeeService.getInstance();
+@WebServlet("/first-project")
+public class FirstProjectServlet extends HttpServlet {
+    private static final ProjectService INSTANCE = ProjectService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
-            out.write("<H3>Первый сотрудник</H3>");
+            out.write("<H3>Первый проект</H3>");
             out.write("<ul>");
-            out.write(String.valueOf(INSTANCE.getFirstEmployee()));
+            out.write(String.valueOf(INSTANCE.getFirstProject()));
             out.write("</ul>");
         }
+
     }
 }
-
