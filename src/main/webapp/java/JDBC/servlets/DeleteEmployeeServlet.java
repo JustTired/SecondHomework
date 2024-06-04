@@ -15,13 +15,13 @@ public class DeleteEmployeeServlet extends HttpServlet {
     private static final EmployeeService INSTANCE = EmployeeService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/jsp/removeEmployee.jsp")
                 .forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
         boolean result = INSTANCE.removeEmployee(uuid);
         var writer = resp.getWriter();

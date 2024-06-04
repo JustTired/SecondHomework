@@ -44,7 +44,7 @@ public class CompanyService {
         return dao.delete(company.name());
     }
 
-    public boolean createCompany(CompanyDto dto) {
+    public boolean addCompany(CompanyDto dto) {
         return dao.add(create(dto)).getName()
                 .equals(dto.name());
     }

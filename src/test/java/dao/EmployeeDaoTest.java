@@ -1,3 +1,5 @@
+package dao;
+
 import JDBC.dao.EmployeeDao;
 import JDBC.entities.CompanyEntity;
 import JDBC.entities.EmployeeEntity;
@@ -9,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EmployeeDaoTest {
-    EmployeeDao INSTANCE = EmployeeDao.getInstance();
-    EmployeeEntity testEmployee = new EmployeeEntity(
+    private final EmployeeDao INSTANCE = EmployeeDao.getInstance();
+    private final EmployeeEntity testEmployee = new EmployeeEntity(
             UUID.randomUUID(),
             "Lara",
             "Conor",
@@ -18,7 +20,7 @@ class EmployeeDaoTest {
             "some@gmail.com",
             new CompanyEntity("Unknown")
     );
-    EmployeeEntity firstEntity = INSTANCE.readFirst();
+    private final EmployeeEntity firstEntity = INSTANCE.readFirst();
 
 
     @Test

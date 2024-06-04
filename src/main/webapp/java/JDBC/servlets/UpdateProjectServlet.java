@@ -18,13 +18,13 @@ public class UpdateProjectServlet extends HttpServlet {
     private static final ProjectService INSTANCE = ProjectService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/jsp/updateProject.jsp")
                 .forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var map = request.getParameterMap();
         boolean res = INSTANCE.updateProject(new ProjectDto(
                 Arrays.toString(map.get("name")),

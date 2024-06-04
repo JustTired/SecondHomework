@@ -17,7 +17,7 @@ public class FirstEmployeeServlet extends HttpServlet {
     private static final EmployeeService INSTANCE = EmployeeService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
             out.write("<H3>Первый сотрудник</H3>");

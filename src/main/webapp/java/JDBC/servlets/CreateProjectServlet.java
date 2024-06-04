@@ -22,7 +22,7 @@ public class CreateProjectServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
         boolean res = INSTANCE.addProject(new ProjectDto(
                 Arrays.toString(map.get("name")),

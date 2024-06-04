@@ -16,7 +16,7 @@ public class FirstCompanyServlet extends HttpServlet {
     private static final CompanyService INSTANCE = CompanyService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
             out.println("<H3>Первая компания</H3><br>");

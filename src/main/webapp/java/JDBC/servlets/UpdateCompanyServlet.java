@@ -15,12 +15,12 @@ public class UpdateCompanyServlet extends HttpServlet {
     private static final CompanyService INSTANCE = CompanyService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/jsp/updateCompany.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String companyName = req.getParameter("companyName");
         String identify = req.getParameter("identify");
         resp.setContentType("text/html;charset=UTF-8");

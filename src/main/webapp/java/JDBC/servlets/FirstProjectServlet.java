@@ -15,7 +15,7 @@ public class FirstProjectServlet extends HttpServlet {
     private static final ProjectService INSTANCE = ProjectService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
             out.write("<H3>Первый проект</H3>");

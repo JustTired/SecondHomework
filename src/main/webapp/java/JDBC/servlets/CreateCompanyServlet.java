@@ -15,16 +15,16 @@ public class CreateCompanyServlet extends HttpServlet {
     private static final CompanyService INSTANCE = CompanyService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/jsp/createCompany.jsp")
                 .forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html;charset=UTF-8");
         String companyName = req.getParameter("name");
-        boolean result = INSTANCE.createCompany(new CompanyDto(companyName));
+        boolean result = INSTANCE.addCompany(new CompanyDto(companyName));
         var writer = resp.getWriter();
         if (result) {
             writer.write("Company created");

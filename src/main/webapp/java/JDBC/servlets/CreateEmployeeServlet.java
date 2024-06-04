@@ -22,7 +22,7 @@ public class CreateEmployeeServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
         boolean res = INSTANCE.addEmployee(new EmployeeDto(

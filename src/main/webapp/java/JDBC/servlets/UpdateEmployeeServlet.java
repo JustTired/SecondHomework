@@ -17,13 +17,13 @@ public class UpdateEmployeeServlet extends HttpServlet {
     private static final EmployeeService INSTANCE = EmployeeService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/x-www-form-urlencoded");
         req.getRequestDispatcher("WEB-INF/jsp/updateEmployee.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
         boolean res = INSTANCE.updateEmployee(new EmployeeDto(
