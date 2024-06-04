@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.Arrays;
 
 @WebServlet("/update-project")
 public class UpdateProjectServlet extends HttpServlet {
@@ -24,11 +23,10 @@ public class UpdateProjectServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        var map = request.getParameterMap();
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean res = INSTANCE.updateProject(new ProjectDto(
-                Arrays.toString(map.get("name")),
-                Date.valueOf(Arrays.toString(map.get("date"))))
+                request.getParameter("name"),
+                Date.valueOf(request.getParameter("date")))
         );
         var writer = response.getWriter();
         if (res) {

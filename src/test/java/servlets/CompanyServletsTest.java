@@ -1,17 +1,13 @@
 package servlets;
 
-import JDBC.dto.CompanyDto;
 import JDBC.servlets.*;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.PrintWriter;
 
 import static org.mockito.Mockito.*;
@@ -20,11 +16,8 @@ class CompanyServletsTest {
     private static final String createPath = "WEB-INF/jsp/createCompany.jsp";
     private static final String deletePath = "WEB-INF/jsp/removeCompany.jsp";
     private static final String updatePath = "WEB-INF/jsp/updateCompany.jsp";
-    @Mock
-    private PrintWriter writer;
-    @InjectMocks
-    private CompaniesServlet allCompanies;
 
+    private PrintWriter writer;
     private HttpServletRequest req;
     private HttpServletResponse resp;
     private RequestDispatcher dispatcher;
@@ -32,8 +25,7 @@ class CompanyServletsTest {
     private DeleteCompanyServlet deleteCompany;
     private UpdateCompanyServlet updateCompany;
     private FirstCompanyServlet firstCompany;
-    private CompanyDto testDto;
-
+    private CompaniesServlet allCompanies;
 
     @BeforeEach
     void setUp() {
@@ -45,7 +37,7 @@ class CompanyServletsTest {
 
     @SneakyThrows
     @Test
-    void shouldAddCompanies() {
+    void shouldReadAllCompanies() {
         allCompanies = new CompaniesServlet();
         when(resp.getWriter()).thenReturn(writer);
         allCompanies.doGet(req, resp);
@@ -55,7 +47,7 @@ class CompanyServletsTest {
 
     @SneakyThrows
     @Test
-    void shouldFirstCompany() {
+    void shouldReadFirstCompany() {
         firstCompany = new FirstCompanyServlet();
         when(resp.getWriter()).thenReturn(writer);
         firstCompany.doGet(req, resp);
@@ -109,7 +101,7 @@ class CompanyServletsTest {
 
     @SneakyThrows
     @Test
-    void shouldUpdateCompanyPost() {
+    void shouldUpdateCompanyDelete() {
         updateCompany = new UpdateCompanyServlet();
         doReturn(writer).when(resp).getWriter();
         updateCompany.doPost(req, resp);

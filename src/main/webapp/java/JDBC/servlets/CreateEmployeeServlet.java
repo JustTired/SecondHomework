@@ -17,12 +17,12 @@ public class CreateEmployeeServlet extends HttpServlet {
     private static final EmployeeService INSTANCE = EmployeeService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/jsp/createEmployee.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
         boolean res = INSTANCE.addEmployee(new EmployeeDto(

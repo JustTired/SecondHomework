@@ -18,12 +18,11 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/x-www-form-urlencoded");
         req.getRequestDispatcher("WEB-INF/jsp/updateEmployee.jsp").forward(req, resp);
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var map = req.getParameterMap();
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
         boolean res = INSTANCE.updateEmployee(new EmployeeDto(
